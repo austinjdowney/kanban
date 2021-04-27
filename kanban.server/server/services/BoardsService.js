@@ -10,8 +10,8 @@ class BoardsService {
     return board
   }
 
-  async getBoardById(id) {
-    const data = await dbContext.Board.findOne({ id: id })
+  async getBoardById(query) {
+    const data = await dbContext.Board.find(query)
     if (!data) {
       throw new BadRequest('Invalid Id')
     }

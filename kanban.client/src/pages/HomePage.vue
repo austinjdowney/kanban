@@ -1,15 +1,34 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo">
-    <h1 class="my-5 bg-dark text-light p-3 rounded d-flex align-items-center">
-      <span class="mx-2 text-white">Vue 3 Starter</span>
-    </h1>
+  <div class="row">
+    <h1>WELCOME  {{ state.user }}</h1>
+    <p>Please sign in to to make a board!!!</p>
   </div>
 </template>
 
 <script>
+import { onMounted, reactive, computed } from 'vue'
+import { AppState } from '../AppState'
+import { boardsService } from '../services/BoardsService'
+import Notification from '../utils/Notification'
+
 export default {
-  name: 'Home'
+  name: 'Home',
+
+  setup() {
+    const state = reactive({
+      boards: computed(() => AppState.boards)
+    })
+    onMounted(async() => {
+      try {
+        await boardsService.getAllBoards()
+      } catch (error) {
+        Notification.toast('error:' + error, 'danger')
+      }
+    })
+    return {
+      state
+    }
+  }
 }
 </script>
 
@@ -22,4 +41,5 @@ export default {
     width: 200px;
   }
 }
+*{outline: 1px solid red }
 </style>

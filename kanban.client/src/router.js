@@ -9,17 +9,27 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: loadPage('HomePage')
+    component: loadPage('HomePage'),
+    beforeEnter: authGuard
+
   },
   {
-    path: '/about',
-    name: 'About',
-    component: loadPage('AboutPage')
+    path: '/board/:id',
+    name: 'Board',
+    component: loadPage('BoardPage'),
+    beforeEnter: authGuard
+  },
+  {
+    path: '/boardspage',
+    name: 'BoardsPage',
+    component: loadPage('BoardsPage'),
+    beforeEnter: authGuard
   },
   {
     path: '/account',
     name: 'Account',
     component: loadPage('AccountPage'),
+    // before you enter the page you need to be authenticated
     beforeEnter: authGuard
   }
 ]
