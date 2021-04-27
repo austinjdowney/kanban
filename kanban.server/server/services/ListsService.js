@@ -10,9 +10,32 @@ class ListsService {
     return list
   }
 
+  async getListById(id) {
+    const data = await dbContext.List.findOne({ id: id })
+    if (!data) {
+      throw new BadRequest('Invalid Id')
+    }
+    return data
+  }
+
   async createList(body) {
     return await dbContext.List.create(body)
   }
-}
 
+  async editList(body) {
+    const data = await dbContext.List.findOneAndUpdate({ _id: body.id }, body, { new: true })
+    if (!data) {
+      throw new BadRequest('Invalid Id')
+    }
+    return data
+  }
+
+  async deleteList(id) {
+    const data = await dbContext.List.findOneAndDelete({ _id: id })
+    if (!data) {
+      throw new BadRequest('Invalid Id')
+    }
+    return 'Successfully Deleted'
+  }
+}
 export const listsService = new ListsService()

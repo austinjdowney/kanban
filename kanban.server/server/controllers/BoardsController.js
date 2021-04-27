@@ -1,6 +1,7 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { boardsService } from '../services/BoardsService'
+import { listsService } from '../services/ListsService'
 
 export class BoardsController extends BaseController {
   constructor() {
@@ -8,6 +9,8 @@ export class BoardsController extends BaseController {
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAllBoards)
+      .get('/:id', this.getBoardById)
+      .get('/:id/lists', this.getListsByBoardId)
       .post('', this.createBoard)
       .put('/:id', this.editBoard)
       .delete('/:id', this.deleteBoard)
@@ -17,6 +20,24 @@ export class BoardsController extends BaseController {
     try {
       const board = await boardsService.getBoardsByAccountId(req.params.id)
       return res.send(board)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getBoardById(req, res, next) {
+    try {
+      const board = await boardsService.getBoardById({ id: req.params.id })
+      return res.send(board)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getListsByBoardId(req, res, next) {
+    try {
+      const list = await listsService.getListsByBoardId({ boardId: req.params.id })
+      return res.send(list)
     } catch (error) {
       next(error)
     }

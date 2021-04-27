@@ -7,26 +7,45 @@ export class CommentsController extends BaseController {
     super('api/comments')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .get('', this.getAllComments)
-      .post('', this.createComments)
-      .put('/:id', this.editComments)
-      .delete('/:id', this.deleteComments)
+      .get('/:id', this.getCommentById)
+      .post('', this.createComment)
+      .put('/:id', this.editComment)
+      .delete('/:id', this.deleteComment)
   }
 
-  async getAllComments(req, res, next) {
+  async getCommentById(req, res, next) {
     try {
-      const comment = await commentsService.getCommentsByTaskId(req.params.id)
+      const comment = await commentsService.getCommentById({ id: req.params.id })
       return res.send(comment)
     } catch (error) {
       next(error)
     }
   }
 
-  async createComments(req, res, next) {
+  async createComment(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
-      const comment = await commentsService.createComments(req.body)
+      const comment = await commentsService.createComment(req.body)
       res.send(comment)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async editComment(req, res, next) {
+    try {
+      req.body.id = req.params.id
+      const data = await commentsService.editComment(req.body)
+      return res.send(data)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async deleteComment(req, res, next) {
+    try {
+      const data = await commentsService.deleteComment(req.params.id)
+      return res.send(data)
     } catch (error) {
       next(error)
     }

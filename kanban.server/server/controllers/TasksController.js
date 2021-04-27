@@ -7,15 +7,25 @@ export class TasksController extends BaseController {
     super('api/tasks')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .get('', this.getAllTasks)
+      .get('/:id/comments', this.getCommentsByTaskId)
+      .get('/:id', this.getTaskById)
       .post('', this.createTask)
       .put('/:id', this.editTask)
       .delete('/:id', this.deleteTask)
   }
 
-  async getAllTasks(req, res, next) {
+  async getCommentsByTaskId(req, res, next) {
     try {
-      const task = await tasksService.getTasksByListId(req.params.id)
+      const comments = await tasksService.getCommentsbyTaskId({ taskId: req.params.id })
+      return res.send(comments)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getTaskById(req, res, next) {
+    try {
+      const task = await tasksService.getTaskById({ id: req.params.id })
       return res.send(task)
     } catch (error) {
       next(error)
@@ -27,6 +37,25 @@ export class TasksController extends BaseController {
       req.body.creatorId = req.userInfo.id
       const task = await tasksService.createTask(req.body)
       res.send(task)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async editTask(req, res, next) {
+    try {
+      req.body.id = req.params.id
+      const data = await tasksService.editTask(req.body)
+      return res.send(data)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async deleteTask(req, res, next) {
+    try {
+      const data = await tasksService.deleteTask(req.params.id)
+      return res.send(data)
     } catch (error) {
       next(error)
     }
