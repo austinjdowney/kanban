@@ -10,8 +10,32 @@ class CommentsService {
     return comment
   }
 
+  async getCommentById(id) {
+    const data = await dbContext.Comment.findOne({ id: id })
+    if (!data) {
+      throw new BadRequest('Invalid Id')
+    }
+    return data
+  }
+
+  async editComment(body) {
+    const data = await dbContext.Comment.findOneAndUpdate({ _id: body.id }, body, { new: true })
+    if (!data) {
+      throw new BadRequest('Invalid Id')
+    }
+    return data
+  }
+
   async createComment(body) {
     return await dbContext.Comment.create(body)
+  }
+
+  async deleteComment(id) {
+    const data = await dbContext.Comment.findOneAndDelete({ _id: id })
+    if (!data) {
+      throw new BadRequest('Invalid Id')
+    }
+    return 'Successfully Deleted'
   }
 }
 

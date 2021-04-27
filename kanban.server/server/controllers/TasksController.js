@@ -1,6 +1,7 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { tasksService } from '../services/TasksService'
+import { commentsService } from '../services/CommentsService'
 
 export class TasksController extends BaseController {
   constructor() {
@@ -16,7 +17,7 @@ export class TasksController extends BaseController {
 
   async getCommentsByTaskId(req, res, next) {
     try {
-      const comments = await tasksService.getCommentsbyTaskId({ taskId: req.params.id })
+      const comments = await commentsService.getCommentsByTaskId({ taskId: req.params.id })
       return res.send(comments)
     } catch (error) {
       next(error)
