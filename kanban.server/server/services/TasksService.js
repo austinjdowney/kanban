@@ -10,8 +10,8 @@ class TasksService {
     return task
   }
 
-  async getTaskById(id) {
-    const data = await dbContext.Task.findOne({ id: id })
+  async getTaskById(id, userId) {
+    const data = await dbContext.Task.findOne({ _id: id, creatorId: userId })
     if (!data) {
       throw new BadRequest('Invalid Id')
     }

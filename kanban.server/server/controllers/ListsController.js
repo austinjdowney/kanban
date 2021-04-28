@@ -18,6 +18,7 @@ export class ListsController extends BaseController {
 
   async getListById(req, res, next) {
     try {
+      req.body.creatorId = req.userInfo
       const list = await listsService.getListById({ id: req.params.id })
       return res.send(list)
     } catch (error) {
@@ -66,7 +67,7 @@ export class ListsController extends BaseController {
 
   async deleteList(req, res, next) {
     try {
-      const data = await listsService.deleteList(req.params.id)
+      const data = await listsService.deleteList(req.params.id, req.userInfo.id)
       return res.send(data)
     } catch (error) {
       next(error)

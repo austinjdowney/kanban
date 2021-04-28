@@ -17,6 +17,7 @@ export class TasksController extends BaseController {
 
   async getCommentsByTaskId(req, res, next) {
     try {
+      req.body.creatorId = req.userInfo
       const comments = await commentsService.getCommentsByTaskId({ taskId: req.params.id })
       return res.send(comments)
     } catch (error) {
@@ -55,7 +56,7 @@ export class TasksController extends BaseController {
 
   async deleteTask(req, res, next) {
     try {
-      const data = await tasksService.deleteTask(req.params.id)
+      const data = await tasksService.deleteTask(req.params.id, req.userInfo.id)
       return res.send(data)
     } catch (error) {
       next(error)
