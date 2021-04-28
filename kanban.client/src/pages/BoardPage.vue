@@ -6,7 +6,8 @@
           <div class="card">
             <div class="card-body flex-column justify-content-center">
               <p class="card-text">
-                {{ state.activeBoard }}
+                {{ state.board.title }}
+                <!-- {{ state.boards[0].title }} -->
               </p>
             </div>
           </div>
@@ -31,10 +32,9 @@ export default {
     const state = reactive({
       loading: true,
       newBoard: {},
-      boards: computed(() => AppState.boards),
+      board: computed(() => AppState.activeBoard),
       user: computed(() => AppState.user),
-      account: computed(() => AppState.account),
-      activePosts: computed(() => AppState.activePosts)
+      account: computed(() => AppState.account)
     })
     onMounted(async() => {
       try {
