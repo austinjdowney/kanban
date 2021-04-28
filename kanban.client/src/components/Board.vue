@@ -10,6 +10,9 @@
             {{ boardProp.title }}
           </router-link>
         </div>
+        <button @click="deleteBoard" class="btn btn-danger">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
       </div>
     </div>
   </div>
@@ -19,6 +22,8 @@
 import { computed, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { useRoute } from 'vue-router'
+import { boardsService } from '../services/BoardsService'
+import Notification from '../utils/Notification'
 
 export default {
   name: 'Board',
@@ -28,7 +33,7 @@ export default {
       required: true
     }
   },
-  setup() {
+  setup(props) {
     const route = useRoute()
     const state = reactive({
       newBoard: {},
@@ -38,7 +43,14 @@ export default {
     })
     return {
       route,
-      state
+      state,
+      async deleteBoard() {
+        try {
+          await boardsService.deleteBoard(props.boardProp.id)
+        } catch (error) {
+          Notification.toast('Error: ' + error, 'danger')
+        }
+      }
     }
   },
   components: {}

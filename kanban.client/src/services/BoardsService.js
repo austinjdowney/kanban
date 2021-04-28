@@ -11,6 +11,12 @@ class BoardsService {
   async addBoard(data) {
     const res = await api.post('api/boards', data)
     router.push({ name: 'BoardPage', params: { id: res.data.id } })
+    this.getAllBoards()
+  }
+
+  async deleteBoard(id) {
+    await api.delete(`api/boards/${id}`)
+    this.getAllBoards()
   }
 
   async setActive(id) {
