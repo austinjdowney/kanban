@@ -1,7 +1,7 @@
 <template>
   <div class="list">
     <div class="col">
-      <div class="card" style="width: 25rem">
+      <div class="card shadow rounded-corners" style="width: 25rem">
         <div class="card-header d-flex">
           <div class="px-2 mx-2">
             <button @click="deleteList" class="btn btn-danger">
@@ -18,8 +18,8 @@
         <div class="d-flex justify-content-center">
           <form @submit.prevent="addTask">
             <input type="'text" v-model="state.newTask.title" placeholder="Add Task...">
-            <button type="submit" class="btn btn-success">
-              Add Task
+            <button type="submit" class="btn btn-success btn-sm">
+              <i class="fa fa-plus" aria-hidden="true"></i>
             </button>
           </form>
         </div>

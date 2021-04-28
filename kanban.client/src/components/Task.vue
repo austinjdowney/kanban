@@ -16,7 +16,14 @@
             </div>
             <div>
               <Comment v-for="comment in state.comments" :key="comment.id" :comment-prop="comment" />
-              (comment inject here)
+            </div>
+            <div class="d-flex">
+              <form @submit.prevent="addComment">
+                <input type="'text" v-model="state.newComment.title" placeholder="Add Comment...">
+                <button type="submit" class="btn btn-success btn-sm">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+              </form>
             </div>
           </div>
         </div>
@@ -43,6 +50,7 @@ export default {
   setup(props) {
     const state = reactive({
       newTask: {},
+      newComment: {},
       //   task: computed(() => AppState.tasks[props.taskProp.id]),
       //  reifhy54kuytu2krgferkj
       comments: computed(() => AppState.comments[props.taskProp.id]),
@@ -64,6 +72,16 @@ export default {
           await tasksService.deleteTask(props.taskProp.id)
         } catch (error) {
           Notification.toast('Error: ' + error, 'danger')
+        }
+      },
+      async addComment() {
+        try {
+          state.newComment.taskId = props.taskProp.id
+          await commentsService.addComment(state.newComment)
+          state.newComment = {}
+          Notification.toast('Successfully Created Post', 'success')
+        } catch (error) {
+          Notification.toast('error:' + error, 'danger')
         }
       }
     }

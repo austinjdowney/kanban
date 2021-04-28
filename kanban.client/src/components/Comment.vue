@@ -6,12 +6,13 @@
           <div class="card-header">
             <div class="d-flex">
               <div class="px-2 mx-2">
-                <button @click="deleteComment" class="btn btn-danger">
+                <button @click="deleteComment" class="btn btn-danger btn-sm">
                   <i class="fa fa-trash" aria-hidden="true"></i>
                 </button>
               </div>
               <div class="">
                 {{ commentProp.title }}
+                {{ commentProp.creator.name }}
               </div>
             </div>
           </div>

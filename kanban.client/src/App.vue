@@ -7,7 +7,9 @@
   </main>
   <footer>
     <div class="bg-dark text-light text-center p-4">
-      Made with 💖 by CodeWorks
+      Can You Do The <i class="fas fa-spray-can">
+        BAN
+      </i>??
     </div>
   </footer>
 </template>

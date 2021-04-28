@@ -1,14 +1,14 @@
 <template>
-  <div class="board container-fluid">
+  <div class="board container-fluid bg-dark">
     <div class="row">
-      <div class="col card-title bg-white text-center">
+      <div class="col card-title bg-primary text-center">
         <h1 class="m-5">
           {{ state.board.title }}
         </h1>
         <form @submit.prevent="addList">
-          <input type="'text" v-model="state.newList.title" placeholder="Create List Title...">
-          <button type="submit" class="btn btn-success">
-            CREATE LIST
+          <input class="px-2" type="'text" v-model="state.newList.title" placeholder="Create List Title...">
+          <button type="submit" class="btn btn-success m-2 btn-sm">
+            <i class="fa fa-plus" aria-hidden="true"></i>
           </button>
         </form>
       </div>

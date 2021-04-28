@@ -13,8 +13,8 @@ const Comment = new Schema(
 
 Comment.virtual('creator', {
   localField: 'creatorId',
-  ref: 'Task',
-  foreignField: 'id',
+  ref: 'Account',
+  foreignField: '_id',
   justOne: true
 })
 

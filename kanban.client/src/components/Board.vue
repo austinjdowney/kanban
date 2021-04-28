@@ -10,7 +10,7 @@
             {{ boardProp.title }}
           </router-link>
         </div>
-        <button @click="deleteBoard" class="btn btn-danger">
+        <button @click="deleteBoard" class="btn btn-danger btn-sm">
           <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
       </div>
