@@ -1,7 +1,27 @@
 <template>
-  <div class="row">
-    <h1>WELCOME  {{ state.user }}</h1>
-    <p>Please sign in to to make a board!!!</p>
+  <div class="row container-fluid flex-column justify-content-center text-center bg-dark text-white">
+    <div class="col mt-5">
+      <h1>
+        WELCOME  "{{ user.name }}" To
+      </h1>
+    </div>
+    <div>
+      <i class="fas fa-spray-can" style="font-size:200px">BAN</i>
+    </div>
+    <div class="col text-center mt-5 pt-5">
+      <h1>
+        <div>
+          WHY ARE YOU STILL HERE?!?
+        </div>
+        <div>
+          GO TO YOUR
+        </div>
+        <router-link :to="{ name: 'BoardsPage' }" class="nav-link">
+          "Board Page"
+        </router-link>
+        TO MAKE A BOARD
+      </h1>
+    </div>
   </div>
 </template>
 
@@ -26,7 +46,8 @@ export default {
       }
     })
     return {
-      state
+      state,
+      user: computed(() => AppState.user)
     }
   }
 }
@@ -41,5 +62,4 @@ export default {
     width: 200px;
   }
 }
-*{outline: 1px solid red }
 </style>
