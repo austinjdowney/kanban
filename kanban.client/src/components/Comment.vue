@@ -1,18 +1,26 @@
 <template>
   <div class="comment">
     <div class="col">
-      <div class="card">
+      <div class="card my-2">
         <div class="">
           <div class="card-header">
             <div class="d-flex">
               <div class="px-2 mx-2">
-                <button @click="deleteComment" class="btn btn-danger btn-sm">
-                  <i class="fa fa-trash" aria-hidden="true"></i>
-                </button>
-              </div>
-              <div class="">
-                {{ commentProp.title }}
-                {{ commentProp.creator.name }}
+                <div class="text-dark d-flex">
+                  <div class=" d-flex flex-column">
+                    <div>
+                      {{ commentProp.creator.name }}
+                    </div>
+                    <div>
+                      {{ commentProp.title }}
+                    </div>
+                  </div>
+                  <div>
+                    <button @click="deleteComment" class="btn trash btn-sm">
+                      <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -59,5 +67,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.create {
+  background: #80ffdb;
+}
+.trash{
+  background:#64dfdf;
+}
 </style>

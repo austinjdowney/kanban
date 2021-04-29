@@ -10,6 +10,7 @@ class CommentsService {
 
   async addComment(newComment) {
     await api.post('api/comments', newComment)
+    this.getCommentsByTaskId()
     // AppState.comments.push(res.data)
   }
 

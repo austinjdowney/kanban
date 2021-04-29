@@ -1,24 +1,26 @@
 <template>
-  <div class="list">
+  <div class="list text-white">
     <div class="col">
-      <div class="card shadow rounded-corners" @dragover.prevent @drop.prevent="moveTask" dropzone="zone" style="width: 25rem">
-        <div class="card-header d-flex">
-          <div class="px-2 mx-2">
-            <button @click="deleteList" class="btn btn-danger">
-              <i class="fa fa-trash" aria-hidden="true"></i>
-            </button>
-          </div>
-          <div>
-            {{ listProp.title }}
+      <div class="card rounded-corners list-header" @dragover.prevent @drop.prevent="moveTask" dropzone="zone" style="width: 25rem">
+        <div class="">
+          <div class="text-light d-flex justify-content-around">
+            <h1>
+              {{ listProp.title }}
+              <button @click="deleteList" class="btn trash ">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </button>
+            </h1>
           </div>
         </div>
         <div>
-          <Task v-for="task in state.tasks" :key="task.id" :task-prop="task" draggable="true" />
+          <h4>
+            <Task v-for="task in state.tasks" :key="task.id" :task-prop="task" draggable="true" />
+          </h4>
         </div>
         <div class="d-flex justify-content-center">
           <form @submit.prevent="addTask">
             <input type="'text" v-model="state.newTask.title" placeholder="Add Task...">
-            <button type="submit" class="btn btn-success btn-sm">
+            <button type="submit" class="btn create btn-sm">
               <i class="fa fa-plus" aria-hidden="true"></i>
             </button>
           </form>
@@ -98,5 +100,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.create {
+  background: #80ffdb;
+}
+.trash{
+  background:#64dfdf;
+}
+.list-header{
+  background: #6930c3;
+}
+button{
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+// template{
+//   font-size: 16px;
+// }
 </style>

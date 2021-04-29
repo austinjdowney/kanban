@@ -1,7 +1,7 @@
 <template>
-  <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-md-12  text-center bg-dark text-white">
+  <div class="container-fluid bg-dark">
+    <div class="row">
+      <div class="col-md-12  text-center text-white">
         <div class="mt-5">
           <h1>
             WELCOME  "{{ user.name }}" To
@@ -10,7 +10,7 @@
         <div class="mx-2 icon">
           <i class="fas fa-spray-can" style="font-size:200px">      BAN</i>
         </div>
-        <div class="text-center mt-5 pt-5">
+        <div class="text-center mt-5">
           <h1>
             <div>
               WHY ARE YOU STILL HERE?!?

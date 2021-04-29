@@ -2,14 +2,14 @@ import { AppState } from '../AppState'
 import { api } from './AxiosService'
 
 class TasksService {
-  async getTasksByListId(id) {
-    const res = await api.get(`api/lists/${id}/tasks`)
-    AppState.tasks[id] = res.data
+  async getTasksByListId(listId) {
+    const res = await api.get(`api/lists/${listId}/tasks`)
+    AppState.tasks[listId] = res.data
   }
 
   async addTask(newTask) {
     await api.post('api/tasks', newTask)
-    // AppState.tasks.push(res.data)
+    this.getTasksByListId(newTask.listId)
   }
 
   async moveTask(newListId) {
@@ -25,9 +25,9 @@ class TasksService {
     AppState.temporaryTask = task
   }
 
-  async deleteTask(id) {
-    await api.delete(`api/tasks/${id}`)
-    this.getTasksByListId()
+  async deleteTask(task) {
+    await api.delete(`api/tasks/${task.id}`)
+    this.getTasksByListId(task.listId)
   }
 }
 

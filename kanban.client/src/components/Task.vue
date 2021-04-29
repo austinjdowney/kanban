@@ -3,27 +3,31 @@
     <div class="col">
       <div class="card">
         <div class="">
-          <div class="card-header">
+          <div class="card-header task-header">
             <div class="d-flex">
               <div class="px-2 mx-2">
-                <button @click="deleteTask" class="btn btn-danger">
+                {{ taskProp.title }}
+                <button @click="deleteTask" class="btn trash">
                   <i class="fa fa-trash" aria-hidden="true"></i>
                 </button>
               </div>
               <div class>
-                {{ taskProp.title }}
               </div>
             </div>
-            <div>
-              <Comment v-for="comment in state.comments" :key="comment.id" :comment-prop="comment" />
+            <div class="">
+              <h5 class="comment-color">
+                <Comment v-for="comment in state.comments" :key="comment.id" :comment-prop="comment" />
+              </h5>
             </div>
             <div class="d-flex">
-              <form @submit.prevent="addComment">
-                <input type="'text" v-model="state.newComment.title" placeholder="Add Comment...">
-                <button type="submit" class="btn btn-success btn-sm">
-                  <i class="fa fa-plus" aria-hidden="true"></i>
-                </button>
-              </form>
+              <h5>
+                <form @submit.prevent="addComment">
+                  <input type="'text" v-model="state.newComment.title" placeholder="Add Comment...">
+                  <button type="submit" class="btn create btn-sm mx-2">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                  </button>
+                </form>
+              </h5>
             </div>
           </div>
         </div>
@@ -69,7 +73,7 @@ export default {
       state,
       async deleteTask() {
         try {
-          await tasksService.deleteTask(props.taskProp.id)
+          await tasksService.deleteTask(props.taskProp)
         } catch (error) {
           Notification.toast('Error: ' + error, 'danger')
         }
@@ -99,5 +103,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.create {
+  background: #80ffdb;
+}
+.trash{
+  background:#64dfdf;
+}
+.task-header{
+  background: #ff5100b9;
+}
 </style>

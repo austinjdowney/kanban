@@ -3,7 +3,7 @@
     <div class="boards-card card">
       <div class="d-flex justify-content-center  ">
         <router-link :to="{ name: 'Board', params:{id: boardProp.id} }">
-          <div class="">
+          <div class="icon">
             <i class="fab fa-galactic-republic" style="font-size:300px"></i>
           </div>
         </router-link>
@@ -13,7 +13,7 @@
           {{ boardProp.title }}
         </h2>
       </div>
-      <button @click="deleteBoard" class="btn btn-danger btn-sm">
+      <button @click="deleteBoard" class="btnv btn-sm trash">
         <i class="fa fa-trash" aria-hidden="true"></i>
       </button>
     </div>
@@ -65,6 +65,10 @@ export default {
   min-height: 20rem;
 }
 
-.img-card{
+.icon{
+    color: #6930c3;
+  }
+.trash{
+  background:#64dfdf;
 }
 </style>

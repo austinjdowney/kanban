@@ -4,7 +4,7 @@
       <div class="row justify-content-center">
         <form @submit.prevent="addBoard">
           <input type="'text" maxlength="20" v-model="state.newBoard.title" placeholder="Create Board Title...">
-          <button type="submit" class="btn btn-success">
+          <button type="submit" class="btn create">
             CREATE BOARD
           </button>
         </form>
@@ -58,12 +58,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.home{
-  text-align: center;
-  user-select: none;
-  > img{
-    height: 100px;
-    width: 100px;
-  }
+.create {
+  background: #80ffdb;
+}
+.trash{
+  background:#64dfdf;
 }
 </style>

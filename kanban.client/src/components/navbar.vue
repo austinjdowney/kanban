@@ -27,7 +27,7 @@
         </li>
         <li class="nav-item">
           <router-link :to="{ name: 'BoardsPage' }" class="nav-link">
-            BoardPage
+            Boards Page
           </router-link>
         </li>
       </ul>
