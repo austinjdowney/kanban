@@ -1,5 +1,5 @@
 <template>
-  <div class="task">
+  <div class="task" @dragstart="setTask">
     <div class="col">
       <div class="card">
         <div class="">
@@ -74,6 +74,14 @@ export default {
           Notification.toast('Error: ' + error, 'danger')
         }
       },
+      async setTask() {
+        try {
+          await tasksService.setTask(props.taskProp)
+        } catch (error) {
+          Notification.toast('error:' + error, 'danger')
+        }
+      },
+
       async addComment() {
         try {
           state.newComment.taskId = props.taskProp.id

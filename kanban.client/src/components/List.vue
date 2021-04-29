@@ -1,7 +1,7 @@
 <template>
   <div class="list">
     <div class="col">
-      <div class="card shadow rounded-corners" style="width: 25rem">
+      <div class="card shadow rounded-corners" @dragover.prevent @drop.prevent="moveTask" dropzone="zone" style="width: 25rem">
         <div class="card-header d-flex">
           <div class="px-2 mx-2">
             <button @click="deleteList" class="btn btn-danger">
@@ -13,7 +13,7 @@
           </div>
         </div>
         <div>
-          <Task v-for="task in state.tasks" :key="task.id" :task-prop="task" />
+          <Task v-for="task in state.tasks" :key="task.id" :task-prop="task" draggable="true" />
         </div>
         <div class="d-flex justify-content-center">
           <form @submit.prevent="addTask">
@@ -81,7 +81,15 @@ export default {
         } catch (error) {
           Notification.toast('error:' + error, 'danger')
         }
+      },
+      async moveTask() {
+        try {
+          await tasksService.moveTask(props.listProp.id)
+        } catch (error) {
+          Notification.toast('error:' + error, 'danger')
+        }
       }
+
     }
   },
   components: {}

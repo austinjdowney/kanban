@@ -12,6 +12,19 @@ class TasksService {
     // AppState.tasks.push(res.data)
   }
 
+  async moveTask(newListId) {
+    const task = AppState.temporaryTask
+    const oldListId = task.listId
+    task.listId = newListId
+    await api.put(`api/tasks/${task.id}`, task)
+    this.getTasksByListId(newListId)
+    this.getTasksByListId(oldListId)
+  }
+
+  async setTask(task) {
+    AppState.temporaryTask = task
+  }
+
   async deleteTask(id) {
     await api.delete(`api/tasks/${id}`)
     this.getTasksByListId()
