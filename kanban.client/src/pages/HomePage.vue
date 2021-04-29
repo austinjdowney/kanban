@@ -1,26 +1,30 @@
 <template>
-  <div class="row container-fluid flex-column justify-content-center text-center bg-dark text-white">
-    <div class="col mt-5">
-      <h1>
-        WELCOME  "{{ user.name }}" To
-      </h1>
-    </div>
-    <div>
-      <i class="fas fa-spray-can" style="font-size:200px">BAN</i>
-    </div>
-    <div class="col text-center mt-5 pt-5">
-      <h1>
-        <div>
-          WHY ARE YOU STILL HERE?!?
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-12  text-center bg-dark text-white">
+        <div class="mt-5">
+          <h1>
+            WELCOME  "{{ user.name }}" To
+          </h1>
         </div>
-        <div>
-          GO TO YOUR
+        <div class="mx-2 icon">
+          <i class="fas fa-spray-can" style="font-size:200px">      BAN</i>
         </div>
-        <router-link :to="{ name: 'BoardsPage' }" class="nav-link">
-          "Board Page"
-        </router-link>
-        TO MAKE A BOARD
-      </h1>
+        <div class="text-center mt-5 pt-5">
+          <h1>
+            <div>
+              WHY ARE YOU STILL HERE?!?
+            </div>
+            <div>
+              GO TO YOUR
+            </div>
+            <router-link :to="{ name: 'BoardsPage' }" class="nav-link">
+              "Board Page"
+            </router-link>
+            TO MAKE A BOARD
+          </h1>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -62,4 +66,7 @@ export default {
     width: 200px;
   }
 }
+  .icon{
+    color: #6930c3;
+  }
 </style>

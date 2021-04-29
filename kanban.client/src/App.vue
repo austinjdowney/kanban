@@ -5,13 +5,13 @@
   <main>
     <router-view />
   </main>
-  <footer>
+  <!-- <footer>
     <div class="bg-dark text-light text-center p-4">
       Can You Do The <i class="fas fa-spray-can">
         BAN
       </i>??
     </div>
-  </footer>
+  </footer> -->
 </template>
 
 <script>

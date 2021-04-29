@@ -1,16 +1,18 @@
 <template>
-  <div class="container-fluid boardsPage">
-    <div class="row justify-content-center">
-      <form @submit.prevent="addBoard">
-        <input type="'text" v-model="state.newBoard.title" placeholder="Create Board Title...">
-        <button type="submit" class="btn btn-success">
-          CREATE BOARD
-        </button>
-      </form>
-    </div>
-    <div class="row">
-      <Board v-for="board in state.boards" :key="board.id" :board-prop="board" />
+  <div class="container-fluid bg-dark">
+    <div class="boardsPage">
+      <div class="row justify-content-center">
+        <form @submit.prevent="addBoard">
+          <input type="'text" maxlength="20" v-model="state.newBoard.title" placeholder="Create Board Title...">
+          <button type="submit" class="btn btn-success">
+            CREATE BOARD
+          </button>
+        </form>
+      </div>
+      <div class="row my-5">
+        <Board v-for="board in state.boards" :key="board.id" :board-prop="board" />
       <!------------^alias for each item in iteration^ -----^propname---^match alias-->
+      </div>
     </div>
   </div>
 </template>

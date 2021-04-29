@@ -1,19 +1,21 @@
 <template>
-  <div class="board">
-    <div class="col md-4">
-      <div class="card">
-        <div class="card-header">
-          <router-link :to="{ name: 'Board', params:{id: boardProp.id} }">
-            <div>
-              <img class="rounded-circle float-left img-small" :src="state.user.picture" alt="User Photo">
-            </div>
-            {{ boardProp.title }}
-          </router-link>
-        </div>
-        <button @click="deleteBoard" class="btn btn-danger btn-sm">
-          <i class="fa fa-trash" aria-hidden="true"></i>
-        </button>
+  <div class="board col-md-4 d-flex justify-content-center my-3">
+    <div class="boards-card card">
+      <div class="d-flex justify-content-center  ">
+        <router-link :to="{ name: 'Board', params:{id: boardProp.id} }">
+          <div class="">
+            <i class="fab fa-galactic-republic" style="font-size:300px"></i>
+          </div>
+        </router-link>
       </div>
+      <div class="d-flex justify-content-center">
+        <h2>
+          {{ boardProp.title }}
+        </h2>
+      </div>
+      <button @click="deleteBoard" class="btn btn-danger btn-sm">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
     </div>
   </div>
 </template>
@@ -58,5 +60,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.boards-card{
+  min-width: 20rem;
+  min-height: 20rem;
+}
 
+.img-card{
+}
 </style>
