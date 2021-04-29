@@ -16,7 +16,7 @@
                     </div>
                   </div>
                   <div>
-                    <button @click="deleteComment" class="btn trash btn-sm">
+                    <button @click="deleteComment" class="btn trash btn-sm m-3">
                       <i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
                   </div>
@@ -55,7 +55,7 @@ export default {
       state,
       async deleteComment() {
         try {
-          await commentsService.deleteComment(props.commentProp.id)
+          await commentsService.deleteComment(props.commentProp)
         } catch (error) {
           Notification.toast('Error: ' + error, 'danger')
         }

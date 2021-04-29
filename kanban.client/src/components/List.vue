@@ -1,26 +1,28 @@
 <template>
-  <div class="list text-white">
+  <div class=" m-3 list text-white">
     <div class="col">
       <div class="card rounded-corners list-header" @dragover.prevent @drop.prevent="moveTask" dropzone="zone" style="width: 25rem">
         <div class="">
           <div class="text-light d-flex justify-content-around">
             <h1>
               {{ listProp.title }}
-              <button @click="deleteList" class="btn trash ">
+            </h1>
+            <div class="text-right">
+              <button @click="deleteList" class="btn trash btn-sm shadow m-2 ml-4">
                 <i class="fa fa-trash" aria-hidden="true"></i>
               </button>
-            </h1>
+            </div>
           </div>
         </div>
-        <div>
-          <h4>
+        <div class="move shadow">
+          <h3 class="task-size">
             <Task v-for="task in state.tasks" :key="task.id" :task-prop="task" draggable="true" />
-          </h4>
+          </h3>
         </div>
         <div class="d-flex justify-content-center">
           <form @submit.prevent="addTask">
             <input type="'text" v-model="state.newTask.title" placeholder="Add Task...">
-            <button type="submit" class="btn create btn-sm">
+            <button type="submit" class="btn create btn-sm m-2 shadow">
               <i class="fa fa-plus" aria-hidden="true"></i>
             </button>
           </form>
@@ -69,7 +71,7 @@ export default {
       route,
       async deleteList() {
         try {
-          await listsService.deleteList(props.listProp.id)
+          await listsService.deleteList(props.listProp)
         } catch (error) {
           Notification.toast('Error: ' + error, 'danger')
         }
@@ -114,7 +116,11 @@ button{
   align-items: flex-end;
   justify-content: flex-end;
 }
-// template{
-//   font-size: 16px;
-// }
+.move{
+  cursor: move;
+}
+.task-size{
+  min-width: 25rem;
+      word-break: break-all;
+}
 </style>

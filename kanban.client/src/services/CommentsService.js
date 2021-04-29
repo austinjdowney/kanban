@@ -10,13 +10,13 @@ class CommentsService {
 
   async addComment(newComment) {
     await api.post('api/comments', newComment)
-    this.getCommentsByTaskId()
+    this.getCommentsByTaskId(newComment.taskId)
     // AppState.comments.push(res.data)
   }
 
-  async deleteComment(id) {
-    await api.delete(`api/comments/${id}`)
-    this.getCommentsByTaskId()
+  async deleteComment(comment) {
+    await api.delete(`api/comments/${comment.id}`)
+    this.getCommentsByTaskId(comment.taskId)
   }
 }
 

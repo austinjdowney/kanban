@@ -8,7 +8,7 @@
           </h1>
         </div>
         <div class="mx-2 icon">
-          <i class="fas fa-spray-can" style="font-size:200px">      BAN</i>
+          <i class="fas fa-spray-can" style="font-size:160px">      BAN</i>
         </div>
         <div class="text-center mt-5">
           <h1>
@@ -19,7 +19,7 @@
               GO TO YOUR
             </div>
             <router-link :to="{ name: 'BoardsPage' }" class="nav-link">
-              "Board Page"
+              "Boards Page"
             </router-link>
             TO MAKE A BOARD
           </h1>
@@ -66,7 +66,15 @@ export default {
     width: 200px;
   }
 }
-  .icon{
+.icon{
     color: #6930c3;
   }
+
+@media only screen and (max-width:800) {
+
+.icon{
+  font-size: 100px;
+}
+
+}
 </style>

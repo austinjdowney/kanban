@@ -4,13 +4,13 @@
       <div class="card">
         <div class="">
           <div class="card-header task-header">
-            <div class="d-flex">
-              <div class="px-2 mx-2">
+            <div class="d-flex justify-content-between">
+              <div class="px-2">
                 {{ taskProp.title }}
-                <button @click="deleteTask" class="btn trash">
-                  <i class="fa fa-trash" aria-hidden="true"></i>
-                </button>
               </div>
+              <button @click="deleteTask" class="btn trash">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </button>
               <div class>
               </div>
             </div>
@@ -112,4 +112,5 @@ export default {
 .task-header{
   background: #ff5100b9;
 }
+
 </style>

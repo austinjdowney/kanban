@@ -12,9 +12,9 @@ class ListsService {
     AppState.lists.push(res.data)
   }
 
-  async deleteList(id) {
-    await api.delete(`api/lists/${id}`)
-    this.getListsByBoardId()
+  async deleteList(list) {
+    await api.delete(`api/lists/${list.id}`)
+    this.getListsByBoardId(list.boardId)
   }
 }
 
