@@ -73,4 +73,5 @@ export default {
 .trash{
   background:#64dfdf;
 }
+
 </style>

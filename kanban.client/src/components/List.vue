@@ -1,5 +1,5 @@
 <template>
-  <div class=" m-3 list text-white">
+  <div class=" m-3 list text-white rounded-corners">
     <div class="col">
       <div class="card rounded-corners list-header" @dragover.prevent @drop.prevent="moveTask" dropzone="zone" style="width: 25rem">
         <div class="">
