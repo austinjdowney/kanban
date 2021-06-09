@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid bg-dark">
+  <div class="container-fluid bg-details bg-dark">
     <div class="row">
       <div class="col-md-12  text-center text-white">
         <div class="mt-5">
@@ -65,6 +65,9 @@ export default {
     height: 200px;
     width: 200px;
   }
+}
+.bg-details{
+background-image: url("https://www.transparenttextures.com/patterns/black-felt.png");
 }
 .icon{
     color: #6930c3;
