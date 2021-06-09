@@ -1,6 +1,6 @@
 <template>
-  <div class="container-fluid bg-dark">
-    <div class="row bg-details">
+  <div class="container-fluid bg-details bg-dark">
+    <div class="row">
       <div class="col-md-12  text-center text-white">
         <div class="mt-5">
           <h1>
