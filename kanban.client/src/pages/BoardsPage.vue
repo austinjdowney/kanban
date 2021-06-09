@@ -47,9 +47,9 @@ export default {
         try {
           await boardsService.addBoard(state.newBoard)
           state.newBoard = {}
-          Notification.toast('Successfully Created Post', 'success')
+          Notification.toast('Successfully Created Board', 'success')
         } catch (error) {
-          Notification.toast('error:' + error, 'danger')
+          Notification.toast('error:' + error, 'warning')
         }
       }
     }

@@ -1,5 +1,5 @@
 <template>
-  <div class="board container-fluid bg-dark">
+  <div class="board container-fluid bg-details">
     <div class="row">
       <div class="col card-title text-white text-center">
         <h1 class="m-5">
@@ -46,7 +46,7 @@ export default {
         await boardsService.setActive(route.params.id)
         await listsService.getListsByBoardId(route.params.id)
       } catch (error) {
-        Notification.toast('error:' + error, 'error')
+        Notification.toast('error:' + error, 'warning')
       }
     })
     return {
@@ -57,9 +57,9 @@ export default {
           state.newList.boardId = route.params.id
           await listsService.addList(state.newList)
           state.newList = {}
-          Notification.toast('Successfully Created Post', 'success')
+          Notification.toast('Successfully Created List', 'success')
         } catch (error) {
-          Notification.toast('error:' + error, 'danger')
+          Notification.toast('error:' + error, 'warning')
         }
       }
     }

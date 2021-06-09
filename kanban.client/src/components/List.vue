@@ -73,7 +73,7 @@ export default {
         try {
           await listsService.deleteList(props.listProp)
         } catch (error) {
-          Notification.toast('Error: ' + error, 'danger')
+          Notification.toast('Error: ' + error, 'Warning')
         }
       },
       async addTask() {
@@ -81,16 +81,16 @@ export default {
           state.newTask.listId = props.listProp.id
           await tasksService.addTask(state.newTask)
           state.newList = {}
-          Notification.toast('Successfully Created Post', 'success')
+          Notification.toast('Successfully Created Task', 'success')
         } catch (error) {
-          Notification.toast('error:' + error, 'danger')
+          Notification.toast('error:' + error, 'warning')
         }
       },
       async moveTask() {
         try {
           await tasksService.moveTask(props.listProp.id)
         } catch (error) {
-          Notification.toast('error:' + error, 'danger')
+          Notification.toast('error:' + error, 'warning')
         }
       }
 
