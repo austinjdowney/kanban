@@ -4,7 +4,7 @@
       <div class="col-md-12 bg-details text-center text-white">
         <div class="mt-5">
           <h1>
-            "{{ user.name }}" To
+            WELCOME  "{{ user.name }}" To
           </h1>
         </div>
         <div class="mx-2 icon">
