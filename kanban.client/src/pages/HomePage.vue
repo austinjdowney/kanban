@@ -67,7 +67,7 @@ export default {
   }
 }
 .bg-details{
-background-image: url("https://www.transparenttextures.com/patterns/bedge-grunge.png");
+background-image: url("https://www.transparenttextures.com/patterns/brushed-alum-dark.png");
 }
 .icon{
     color: #6930c3;
