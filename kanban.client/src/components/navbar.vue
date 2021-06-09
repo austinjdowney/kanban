@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bug-details">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <i class="fas fa-spray-can" style="font-size:64px">
@@ -101,6 +101,10 @@ export default {
 </script>
 
 <style scoped>
+.bg-details{
+background-color: #07000d;
+background-image: url("https://www.transparenttextures.com/patterns/brushed-alum-dark.png");
+}
 .dropdown-menu {
   user-select: none;
   display: block;
