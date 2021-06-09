@@ -67,6 +67,7 @@ export default {
   }
 }
 .bg-details{
+background-color: darkgray;
 background-image: url("https://www.transparenttextures.com/patterns/brushed-alum-dark.png");
 }
 .icon{
