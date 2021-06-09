@@ -67,6 +67,10 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+.bg-details{
+background-color: #07000d;
+background-image: url("https://www.transparenttextures.com/patterns/brushed-alum-dark.png");
+}
 .create {
   background: #80ffdb;
 }
