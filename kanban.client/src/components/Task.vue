@@ -55,15 +55,12 @@ export default {
     const state = reactive({
       newTask: {},
       newComment: {},
-      //   task: computed(() => AppState.tasks[props.taskProp.id]),
-      //  reifhy54kuytu2krgferkj
       comments: computed(() => AppState.comments[props.taskProp.id]),
       user: computed(() => AppState.user),
       account: computed(() => AppState.account)
     })
     onMounted(async() => {
       try {
-        //  reifhy54kuytu2krgferkj
         await commentsService.getCommentsByTaskId(props.taskProp.id)
       } catch (error) {
         Notification.toast('error:' + error, 'error')
@@ -75,14 +72,14 @@ export default {
         try {
           await tasksService.deleteTask(props.taskProp)
         } catch (error) {
-          Notification.toast('Error: ' + error, 'danger')
+          Notification.toast('Error: ' + error, 'warning')
         }
       },
       async setTask() {
         try {
           await tasksService.setTask(props.taskProp)
         } catch (error) {
-          Notification.toast('error:' + error, 'danger')
+          Notification.toast('error:' + error, 'warning')
         }
       },
 
@@ -91,9 +88,9 @@ export default {
           state.newComment.taskId = props.taskProp.id
           await commentsService.addComment(state.newComment)
           state.newComment = {}
-          Notification.toast('Successfully Created Post', 'success')
+          Notification.toast('Successfully Created Comment', 'success')
         } catch (error) {
-          Notification.toast('error:' + error, 'danger')
+          Notification.toast('error:' + error, 'warning')
         }
       }
     }

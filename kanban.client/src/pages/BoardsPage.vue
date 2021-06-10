@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid bg-dark">
+  <div class="container-fluid bg-details">
     <div class="boardsPage">
       <div class="row justify-content-center">
         <form @submit.prevent="addBoard">
@@ -47,9 +47,9 @@ export default {
         try {
           await boardsService.addBoard(state.newBoard)
           state.newBoard = {}
-          Notification.toast('Successfully Created Post', 'success')
+          Notification.toast('Successfully Created Board', 'success')
         } catch (error) {
-          Notification.toast('error:' + error, 'danger')
+          Notification.toast('error:' + error, 'warning')
         }
       }
     }
@@ -58,6 +58,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.bg-details{
+background-color: #07000d;
+background-image: url("https://www.transparenttextures.com/patterns/brushed-alum-dark.png");
+}
 .create {
   background: #80ffdb;
 }

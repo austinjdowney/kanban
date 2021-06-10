@@ -50,7 +50,7 @@ export default {
         try {
           await boardsService.deleteBoard(props.boardProp.id)
         } catch (error) {
-          Notification.toast('Error: ' + error, 'danger')
+          Notification.toast('Error: ' + error, 'warning')
         }
       }
     }

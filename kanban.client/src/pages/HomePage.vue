@@ -1,7 +1,7 @@
 <template>
-  <div class="container-fluid bg-dark">
+  <div class="container-fluid bg-details">
     <div class="row">
-      <div class="col-md-12  text-center text-white">
+      <div class="col-md-12 text-center text-white">
         <div class="mt-5">
           <h1>
             WELCOME  "{{ user.name }}" To
@@ -65,6 +65,10 @@ export default {
     height: 200px;
     width: 200px;
   }
+}
+.bg-details{
+background-color: #07000d;
+background-image: url("https://www.transparenttextures.com/patterns/brushed-alum-dark.png");
 }
 .icon{
     color: #6930c3;
